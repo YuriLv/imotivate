@@ -23,6 +23,7 @@ def start(message):
 print("Lets start")
 
 
+
 if __name__ == '__main__':
     try:
         bot.polling(none_stop=True)
@@ -31,4 +32,8 @@ if __name__ == '__main__':
 
     except Exception:
         print("Internet error!")
+        sleep(1)
+        bot.polling(none_stop=True)
+    finally:
+        bot.polling(none_stop=True)
         sleep(1)

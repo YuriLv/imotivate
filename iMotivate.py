@@ -33,23 +33,22 @@ def send_api_request(quote_text):
     return True
 
 
-time_start = datetime.time(0,00,00)
-time_end = datetime.time(23,50,00)
+time_start = datetime.time(9,00,00)
+time_end = datetime.time(22,00,00)
 time_current = datetime.datetime.now().time()
 
 def main():
     while True:
-        # os.system('python chat_id.py')
-
+        
         if time_start < time_current < time_end:
 
             quote = get_quote()
             send_api_request(quote)
-            sleep(20)
+            sleep(60)
             print()
         else:
             print('waiting. Working time 09-20, Now is ', time_current)
-            sleep(300)
+            sleep(3600)
 
 if __name__ == '__main__':
 
