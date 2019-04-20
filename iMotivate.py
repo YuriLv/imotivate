@@ -3,8 +3,8 @@ from time import sleep
 import requests
 import random
 import datetime
-import os
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+# import os
+# from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 
 

@@ -37,7 +37,7 @@ def delete(message):
         new_f = f.readlines()
         f.seek(0)
         for line in new_f:
-            if ("\n"+str(message.chat.id)) not in line:
+            if (str(message.chat.id)) not in line:
                 f.write(line)
         f.truncate()
         f.close()
