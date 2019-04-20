@@ -7,8 +7,6 @@ import os
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 
-with open('id_list_text.txt') as inp:
-    id_list = list(map(int, inp.read().split()))
 
 
 def get_quote():
@@ -33,21 +31,21 @@ def send_api_request(quote_text):
     return True
 
 
-time_start = datetime.time(9,00,00)
+time_start = datetime.time(10,00,00)
 time_end = datetime.time(22,00,00)
 time_current = datetime.datetime.now().time()
 
 def main():
     while True:
-        
+
         if time_start < time_current < time_end:
 
             quote = get_quote()
             send_api_request(quote)
-            sleep(60)
+            sleep(36000)
             print()
         else:
-            print('waiting. Working time 09-20, Now is ', time_current)
+            print('waiting. Working time 10-20, Now is ', time_current)
             sleep(3600)
 
 if __name__ == '__main__':

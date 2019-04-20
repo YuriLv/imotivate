@@ -7,9 +7,11 @@ from time import sleep
 bot = telebot.TeleBot('891630453:AAE7NaSUSbUTVjFImCKeZBMudgys0omiR3Y')
 @bot.message_handler(commands=["start"])
 def start(message):
-    with open('id_list_text.txt') as data_file:
-        id_list = list(map(int, data_file.read().split()))
-    bot.send_message(message.chat.id, "Welcome to our iMotivateBot !!! Get Your daily motivation now!!")
+    with open('id_list_text.txt') as f:
+        id_list = list(map(int, f.read().split()))
+        bot.send_message(message.chat.id, "Welcome to our iMotivateBot !!! Get Your daily motivation now!! \n"
+                                          "/delete - write if You want to unsubscribe")
+        print("chat.id=", message.chat.id)
 
     if id_list.count(message.chat.id) == 0:
         f = open('id_list_text.txt', 'a')
@@ -19,6 +21,38 @@ def start(message):
 
     print(id_list)
     return
+
+
+@bot.message_handler(commands=["test"])
+def test(message):
+
+    bot.send_message(message.chat.id, "Some test")
+
+
+
+@bot.message_handler(commands=["delete"])
+def delete(message):
+    bot.send_message(message.chat.id, "UNSUBSCRIBED")
+    with open('id_list_text.txt', 'r+') as f:
+        new_f = f.readlines()
+        f.seek(0)
+        for line in new_f:
+            if ("\n"+str(message.chat.id)) not in line:
+                f.write(line)
+        f.truncate()
+        f.close()
+    print("chat.id=", message.chat.id, 'deleted')
+
+@bot.message_handler(commands=["help"])
+def help(message):
+
+    bot.send_message(message.chat.id, "Ви можете вибрати наступні команди: \n "
+                                      "/start - start motivate bot\n"
+                                      "/test - test test\n"
+                                      "/delete - Unsubscribe\n"
+                                      "/other  - other other")
+
+
 
 print("Lets start")
 
