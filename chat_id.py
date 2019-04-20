@@ -46,7 +46,7 @@ def delete(message):
 @bot.message_handler(commands=["help"])
 def help(message):
 
-    bot.send_message(message.chat.id, "Ви можете вибрати наступні команди: \n "
+    bot.send_message(message.chat.id, "You can choose next commands: \n "
                                       "/start - start motivate bot\n"
                                       "/test - test test\n"
                                       "/delete - Unsubscribe\n"
